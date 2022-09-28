@@ -1,6 +1,13 @@
 import dbcreds
 import mariadb
 
+def check_sales_id(sales_people, chosen_id):
+    for person in sales_people:
+        if(chosen_id == person[1]):
+            return True
+    return False
+
+
 def get_all_sales_person():
     try:
         conn = mariadb.connect(password=dbcreds.pasword, user=dbcreds.user, host=dbcreds.host, port=dbcreds.port, database=dbcreds.database)
@@ -17,6 +24,8 @@ def get_all_sales_person():
         print("\n", person)
 
     user_selection = input("\nWho do you pick? Chose from 1, 2 or 3.")
+
+
     user_id = int(user_selection)
     return user_id
 
